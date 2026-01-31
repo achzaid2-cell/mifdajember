@@ -26,14 +26,22 @@
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
+        /* Animasi Fade In saat pindah halaman */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="navigateTo('beranda')">
                 <!-- Logo Navigasi -->
                 <img src="https://iili.io/fi6BYpR.md.png" alt="Logo Al-Miftah Sidogiri" class="h-14 w-auto object-contain">
                 <div class="flex flex-col border-l border-gray-200 pl-4">
@@ -41,15 +49,19 @@
                     <span class="text-[10px] font-semibold text-emerald-600 tracking-[0.2em] uppercase mt-1">Mifda Jember</span>
                 </div>
             </div>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 font-medium items-center">
-                <a href="#beranda" class="hover:text-emerald-600 transition">Beranda</a>
-                <a href="#tentang" class="hover:text-emerald-600 transition">Tentang</a>
-                <a href="#struktur" class="hover:text-emerald-600 transition">Struktur</a>
-                <a href="#program" class="hover:text-emerald-600 transition">Program</a>
-                <a href="#kegiatan" class="hover:text-emerald-600 transition">Kegiatan</a>
-                <a href="#pendaftaran" class="hover:text-emerald-600 transition">Pendaftaran</a>
+                <!-- Perhatikan: href diganti javascript:void(0) dan onclick function -->
+                <a href="javascript:void(0)" onclick="navigateTo('beranda')" class="nav-link text-emerald-600 hover:text-emerald-800 transition" data-target="beranda">Beranda</a>
+                <a href="javascript:void(0)" onclick="navigateTo('tentang')" class="nav-link text-gray-600 hover:text-emerald-600 transition" data-target="tentang">Tentang</a>
+                <a href="javascript:void(0)" onclick="navigateTo('struktur')" class="nav-link text-gray-600 hover:text-emerald-600 transition" data-target="struktur">Struktur</a>
+                <a href="javascript:void(0)" onclick="navigateTo('program')" class="nav-link text-gray-600 hover:text-emerald-600 transition" data-target="program">Program</a>
+                <a href="javascript:void(0)" onclick="navigateTo('kegiatan')" class="nav-link text-gray-600 hover:text-emerald-600 transition" data-target="kegiatan">Kegiatan</a>
+                <a href="javascript:void(0)" onclick="navigateTo('pendaftaran')" class="nav-link text-gray-600 hover:text-emerald-600 transition" data-target="pendaftaran">Pendaftaran</a>
                 <a href="#kontak" class="bg-emerald-700 text-white px-6 py-2.5 rounded-full hover:bg-emerald-800 transition shadow-md">Hubungi Kami</a>
             </div>
+            
             <!-- Mobile Menu Toggle -->
             <div id="mobile-menu-btn" class="md:hidden text-emerald-900 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,259 +69,400 @@
                 </svg>
             </div>
         </div>
+        
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-6 shadow-lg">
             <div class="flex flex-col space-y-4">
-                <a href="#beranda" class="hover:text-emerald-600">Beranda</a>
-                <a href="#tentang" class="hover:text-emerald-600">Tentang</a>
-                <a href="#struktur" class="hover:text-emerald-600">Struktur</a>
-                <a href="#program" class="hover:text-emerald-600">Program</a>
-                <a href="#kegiatan" class="hover:text-emerald-600">Kegiatan</a>
-                <a href="#pendaftaran" class="hover:text-emerald-600 font-bold">Pendaftaran</a>
+                <a href="javascript:void(0)" onclick="navigateTo('beranda')" class="mobile-link hover:text-emerald-600">Beranda</a>
+                <a href="javascript:void(0)" onclick="navigateTo('tentang')" class="mobile-link hover:text-emerald-600">Tentang</a>
+                <a href="javascript:void(0)" onclick="navigateTo('struktur')" class="mobile-link hover:text-emerald-600">Struktur</a>
+                <a href="javascript:void(0)" onclick="navigateTo('program')" class="mobile-link hover:text-emerald-600">Program</a>
+                <a href="javascript:void(0)" onclick="navigateTo('kegiatan')" class="mobile-link hover:text-emerald-600">Kegiatan</a>
+                <a href="javascript:void(0)" onclick="navigateTo('pendaftaran')" class="mobile-link hover:text-emerald-600 font-bold">Pendaftaran</a>
                 <a href="#kontak" class="text-emerald-700 font-bold">Hubungi Kami</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="beranda" class="hero-gradient text-white py-24 px-6 relative overflow-hidden">
-        <div class="container mx-auto flex flex-col md:flex-row items-center relative z-10">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <div class="inline-block bg-emerald-500/20 py-1 px-4 rounded-full text-emerald-200 text-sm font-semibold mb-6 border border-emerald-400/30">
-                    Al-Miftah Lil Ulum untuk Ummat
-                </div>
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                    Metode Cepat <br> <span class="text-emerald-300">Baca Kitab Kuning</span>
-                </h1>
-                <p class="text-lg text-emerald-50 mb-10 opacity-90 max-w-xl">
-                    Selamat datang di layanan resmi Al-Miftah Daerah Jember. Kami hadir untuk mensosialisasikan, membimbing, dan mengawal standarisasi metode cepat baca kitab di wilayah Jember.
-                </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#program" class="bg-white text-emerald-900 px-8 py-4 rounded-xl font-bold hover:bg-emerald-50 transition shadow-xl text-center">Lihat Program</a>
-                    <a href="#tentang" class="border border-emerald-300/50 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700/50 transition text-center backdrop-blur-sm">Pelajari Metode</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative">
-                    <div class="w-80 h-[450px] bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg flex flex-col items-center justify-center p-6 shadow-2xl overflow-hidden text-center">
-                        <img src="https://iili.io/fi6BYpR.md.png" alt="Icon Al-Miftah Sidogiri" class="w-48 h-auto object-contain mb-8 drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)] transform hover:scale-105 transition-transform duration-500">
-                        <h3 class="text-2xl font-bold uppercase tracking-widest text-emerald-100">MIFDA JEMBER</h3>
-                        <p class="text-sm text-emerald-200 mt-3 italic tracking-wide">Al-Miftah Daerah Jember</p>
-                        <div class="mt-10 flex space-x-1 items-center">
-                            <div class="w-2 h-2 rounded-full bg-emerald-300"></div>
-                            <div class="w-12 h-1 rounded-full bg-emerald-300/30"></div>
-                            <div class="w-2 h-2 rounded-full bg-emerald-300/60"></div>
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow">
+
+        <!-- ================= HALAMAN BERANDA (Gabungan Hero + Stats + CTA) ================= -->
+        <div id="beranda-group" class="page-section fade-in">
+            
+            <!-- Hero Section -->
+            <section id="beranda" class="hero-gradient text-white py-24 px-6 relative overflow-hidden">
+                <div class="container mx-auto flex flex-col md:flex-row items-center relative z-10">
+                    <div class="md:w-1/2 mb-12 md:mb-0">
+                        <div class="inline-block bg-emerald-500/20 py-1 px-4 rounded-full text-emerald-200 text-sm font-semibold mb-6 border border-emerald-400/30">
+                            Al-Miftah Lil Ulum untuk Ummat
+                        </div>
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                            Metode Cepat <br> <span class="text-emerald-300">Baca Kitab Kuning</span>
+                        </h1>
+                        <p class="text-lg text-emerald-50 mb-10 opacity-90 max-w-xl">
+                            Selamat datang di layanan resmi Al-Miftah Daerah Jember. Kami hadir untuk mensosialisasikan, membimbing, dan mengawal standarisasi metode cepat baca kitab di wilayah Jember.
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button onclick="navigateTo('program')" class="bg-white text-emerald-900 px-8 py-4 rounded-xl font-bold hover:bg-emerald-50 transition shadow-xl text-center">Lihat Program</button>
+                            <button onclick="navigateTo('tentang')" class="border border-emerald-300/50 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700/50 transition text-center backdrop-blur-sm">Pelajari Metode</button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="relative">
+                            <div class="w-80 h-[450px] bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg flex flex-col items-center justify-center p-6 shadow-2xl overflow-hidden text-center">
+                                <img src="https://iili.io/fi6BYpR.md.png" alt="Icon Al-Miftah Sidogiri" class="w-48 h-auto object-contain mb-8 drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)] transform hover:scale-105 transition-transform duration-500">
+                                <h3 class="text-2xl font-bold uppercase tracking-widest text-emerald-100">MIFDA JEMBER</h3>
+                                <p class="text-sm text-emerald-200 mt-3 italic tracking-wide">Al-Miftah Daerah Jember</p>
+                                <div class="mt-10 flex space-x-1 items-center">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-300"></div>
+                                    <div class="w-12 h-1 rounded-full bg-emerald-300/30"></div>
+                                    <div class="w-2 h-2 rounded-full bg-emerald-300/60"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Stats Section -->
-    <section class="py-16 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                <div class="space-y-2">
-                    <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">50+</h3>
-                    <p class="text-gray-500 font-medium">Lembaga Pengguna</p>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">1000+</h3>
-                    <p class="text-gray-500 font-medium">Santri Teruji</p>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">200+</h3>
-                    <p class="text-gray-500 font-medium">Guru Bersertifikat</p>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">5+</h3>
-                    <p class="text-gray-500 font-medium">Tahun Mengabdi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="tentang" class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <div class="relative">
-                        <img src="https://iili.io/fL2DwrP.md.png" alt="Suasana Belajar Kitab" class="rounded-3xl shadow-2xl border-8 border-white">
-                        <div class="absolute -bottom-6 -right-6 bg-emerald-700 text-white p-6 rounded-2xl shadow-xl hidden sm:block">
-                            <p class="text-2xl font-bold italic leading-none">Cepat & Mudah</p>
-                            <p class="text-sm opacity-80 mt-1">Membaca Kitab Kuning</p>
+            <!-- Stats Section (Bagian dari Beranda) -->
+            <section id="stats" class="py-16 bg-white border-b border-gray-100">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                        <div class="space-y-2">
+                            <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">50+</h3>
+                            <p class="text-gray-500 font-medium">Lembaga Pengguna</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">1000+</h3>
+                            <p class="text-gray-500 font-medium">Santri Teruji</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">200+</h3>
+                            <p class="text-gray-500 font-medium">Guru Bersertifikat</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-4xl font-extrabold text-emerald-700 tracking-tight">5+</h3>
+                            <p class="text-gray-500 font-medium">Tahun Mengabdi</p>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl font-bold text-emerald-900 mb-8 leading-tight">Mengenal Inovasi Metode <br> Al-Miftah Lil Ulum</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        Metode Al-Miftah Lil Ulum merupakan inovasi metode dari Pondok Pesantren Sidogiri yang dirancang khusus untuk mempermudah santri pemula dalam menguasai kaidah Nahwu dan Shorof secara cepat dan efektif.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Section Struktur Organisasi (Update: Bingkai Kotak) -->
-    <section id="struktur" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Organisasi</span>
-                <h2 class="text-4xl font-bold text-emerald-900 mt-2">Struktur MIFDA JEMBER</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Susunan kepengurusan Al-Miftah Lil Ulum Daerah Jember yang bertugas mengawal standarisasi metode.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Personil 1 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdBmuV.th.png" alt="Ketua Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Ust. Misbahul Ulum</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">KETUA</p>
-                    <a href="https://wa.me/628987701455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-7701-455
+             <!-- Call to Action (Bagian dari Beranda) -->
+             <section id="cta" class="py-20 bg-emerald-900 text-white text-center relative overflow-hidden">
+                <div class="container mx-auto px-6 relative z-10">
+                    <h2 class="text-4xl font-bold mb-8">Siap Menjadi Bagian Dari Kami?</h2>
+                    <p class="mb-10 opacity-80 max-w-2xl mx-auto text-lg leading-relaxed">Mari bergabung bersama puluhan lembaga lainnya dalam mempermudah akses belajar kitab kuning bagi generasi mendatang.</p>
+                    <a href="https://wa.me/628981561455?text=Assalamualaikum%20saya%20ingin%20menjadi%20pengguna%20almiftah" class="inline-flex items-center bg-white text-emerald-900 px-10 py-4 rounded-2xl font-bold hover:bg-emerald-50 transition shadow-2xl">
+                        Konsultasi Calon Lembaga Pengguna
                     </a>
                 </div>
-                <!-- Personil 2 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdauXs.png" alt="Sekretaris Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Ust. Misbahul Alam</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">SEKRETARIS</p>
-                    <a href="https://wa.me/628981561455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-1561-1455
-                    </a>
-                </div>
-                <!-- Personil 3 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdw1K7.png" alt="Wakil I Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Ust. Fahmi Luayyin</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">WAKIL I</p>
-                    <a href="https://wa.me/628998701455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 899-8701-455
-                    </a>
-                </div>
-                <!-- Personil 4 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdvc3N.png" alt="Wakil II Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Ust. Muhammad Anis</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">WAKIL II</p>
-                    <a href="https://wa.me/628981111455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-1111-455
-                    </a>
-                </div>
-                <!-- Personil 5 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=300&h=300&q=80" alt="Foto Pengurus" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Nama Lengkap</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">Bid. Humas</p>
-                    <a href="https://wa.me/628567981455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> Hubungi WhatsApp
-                    </a>
-                </div>
-                <!-- Personil 6 -->
-                <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80" alt="Foto Pengurus" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
-                    <h4 class="text-xl font-bold text-emerald-900">Nama Lengkap</h4>
-                    <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">Anggota</p>
-                    <a href="https://wa.me/628567981455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
-                        <i class="fab fa-whatsapp mr-2 text-lg"></i> Hubungi WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Program Section -->
-    <section id="program" class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Layanan Kami</span>
-                <h2 class="text-4xl font-bold text-emerald-900 mt-2">Peran Al-Miftah Daerah</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
-                    <h3 class="text-2xl font-bold text-emerald-900 mb-4">Training</h3>
-                    <p class="text-gray-600 leading-relaxed">Proses pembinaan pengajar (Asatidz) untuk memastikan kualitas penyampaian materi sesuai dengan standar Pusat Al-Miftah Sidogiri.</p>
-                </div>
-                <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
-                    <h3 class="text-2xl font-bold text-emerald-900 mb-4">Pembinaan Guru</h3>
-                    <p class="text-gray-600 leading-relaxed">Pembinaan Guru Al-Miftah setiap bulan guna mendalami metodologi dan manajemen kelas yang efektif.</p>
-                </div>
-                <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
-                    <h3 class="text-2xl font-bold text-emerald-900 mb-4">Wisuda Bersama</h3>
-                    <p class="text-gray-600 leading-relaxed">Penyelenggaraan evaluasi serentak tingkat daerah untuk menjamin objektivitas kelulusan dan standarisasi nilai santri.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </div> 
+        <!-- End Beranda Group -->
 
-    <!-- Halaman Kegiatan -->
-    <section id="kegiatan" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Dokumentasi</span>
-                <h2 class="text-4xl font-bold text-emerald-900 mt-2">Kegiatan Mifda Jember</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Placeholder Kegiatan 1 -->
-                <div class="overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdZdle.md.jpg" alt="Kegiatan 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Muharram 1447</span>
-                        <h4 class="text-xl font-bold text-emerald-900 mt-2 mb-3">Kegiatan Pembinaan Rutin</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">Pembinaan bulanan untuk menyelaraskan metode yang dipaparkan oleh para Tutor.</p>
+        <!-- ================= HALAMAN TENTANG ================= -->
+         <!-- ================= HALAMAN TENTANG (REVISI SESUAI SOURCE) ================= -->
+        <section id="tentang" class="page-section hidden py-16 bg-gray-50 fade-in">
+            <div class="container mx-auto px-6">
+                
+                <!-- Header Tentang -->
+                <div class="text-center mb-16">
+                    <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Pondok Pesantren Sidogiri</span>
+                    <h2 class="text-4xl font-bold text-emerald-900 mt-2">Tentang Al-Miftah Lil Ulum</h2>
+                    <div class="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full"></div>
+                </div>
+
+                <!-- Kilas Balik -->
+                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 mb-12">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mr-4">
+                            <i class="fas fa-history text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-emerald-900">Kilas Balik</h3>
+                    </div>
+                    <div class="prose prose-lg text-gray-600 max-w-none space-y-4 text-justify">
+                        <p>
+                            Batartama (Badan Tarbiyah Wa Ta’lim Madrasi) merupakan instansi yang menangani Pendidikan di Pondok Pesantren Sidogiri. Mulai dari Materi, kurikulum hingga sistem pelaksanaannya diatur oleh instansi tersebut. Semua satuan pendidikan di Pondok Pesatren Sidogiri merupakan bawahan dari Batartama, dari satuan pendidikan tingkat terendah (I’dadiyah) hingga tingkat tertinggi (Aliyah).
+                        </p>
+                        <p>
+                            Pada tahun 2010 pendidikan di Sidogiri dirasa mengalami kemunduran khususnya dalam bidang baca kitab kuning. Hal ini menuntut Batartama untuk berfikir keras mengatasi permasalahan tersebut. Atas instruksi langsung dari majelis keluarga, Batartama membuat konsep dasar kurikulum dan sistem pendidikan baru.
+                        </p>
+                        <p>
+                            Langkah awal yang dilakukan adalah studi banding ke Pesantren dan lembaga pendidikan Islam lain. Dengan melalui pertimbangan dan penggodokan yang matang, lahirlah metode belajar membaca kitab dengan mudah dan menarik yang disusun oleh Tim Batartama Pondok Pesantren Sidogiri yang diberi nama <strong>Al-Miftah Lil Ulum</strong>. Metode ini dirancang khusus bagi pemula, utamanya anak-anak kecil dan dibuat sedemikian rupa menyenangkan dan mudah bagi mereka.
+                        </p>
                     </div>
                 </div>
-                <!-- Placeholder Kegiatan 2 -->
-                <div class="overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 card-hover shadow-sm">
-                    <img src="https://iili.io/fLdmEQ4.md.jpg" alt="Kegiatan 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Safar 1447</span>
-                        <h4 class="text-xl font-bold text-emerald-900 mt-2 mb-3">Sosialisasi PJ Lembaga</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">Pertemuan rutin daerah untuk memperkuat pemahaman metode Al-Miftah bagi para PJ Lembaga.</p>
+
+                <!-- Motto, Visi, Misi Grid -->
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <!-- Motto -->
+                    <div class="bg-emerald-700 text-white rounded-3xl p-8 shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <h4 class="text-xl font-bold mb-6 border-b border-emerald-500 pb-2"><i class="fas fa-star mr-2"></i> MOTTO</h4>
+                        <ol class="space-y-3 list-decimal list-inside font-medium text-emerald-50">
+                            <li>Mudah</li>
+                            <li>Menyenangkan</li>
+                            <li>Menyentuh Hati</li>
+                        </ol>
+                    </div>
+
+                    <!-- Visi -->
+                    <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 hover:border-emerald-200 transition duration-300">
+                        <h4 class="text-xl font-bold text-emerald-900 mb-6 border-b border-gray-100 pb-2"><i class="fas fa-eye mr-2 text-emerald-600"></i> VISI</h4>
+                        <ol class="space-y-4 list-decimal list-inside text-gray-600 text-sm leading-relaxed">
+                            <li>Menghidupkan kembali semarak belajar dan mengaji kitab kuning.</li>
+                            <li>Mencetak murid-murid yang handal membaca kitab kuning dan bisa mengaplikasikannya dalam kehidupan sehari-hari.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Misi -->
+                    <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 hover:border-emerald-200 transition duration-300">
+                        <h4 class="text-xl font-bold text-emerald-900 mb-6 border-b border-gray-100 pb-2"><i class="fas fa-bullseye mr-2 text-emerald-600"></i> MISI</h4>
+                        <ol class="space-y-4 list-decimal list-inside text-gray-600 text-sm leading-relaxed">
+                            <li>Mewujudkan lembaga profesional.</li>
+                            <li>Membangun sistem manajemen yang berbasis pada mutu.</li>
+                            <li>Menjadi pusat pengembangan pembelajaran dan dakwah pada masyarakat.</li>
+                        </ol>
                     </div>
                 </div>
-                <!-- Placeholder Kegiatan 3 -->
-                <div class="overflow-hidden rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center p-12 text-center text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                    <p class="font-medium">Nantikan Kegiatan Berikutnya</p>
+
+                <!-- Keistimewaan -->
+                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 mb-16">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl font-bold text-emerald-900">Keistimewaan Al-Miftah</h3>
+                        <p class="text-gray-500 mt-2">Mengapa metode ini efektif untuk pemula?</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Desain menarik dan ramah santri.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Hanya terdiri dari 4 jilid (fokus poin penting).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Dikombinasikan dengan lagu agar mudah dihafal.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Disampaikan dengan Bahasa Indonesia.</span>
+                            </li>
+                        </ul>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Dilengkapi tabel, skema, dan model latihan.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Tidak merubah istilah asli Nahwu Shorof.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Program unggulan percepatan baca kitab.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Materi pengenalan (muqoddimah) bahasa arab.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Isi Materi / Jilid -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-emerald-900 text-center mb-10">Kurikulum & Materi (Isi Al-Miftah)</h3>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Jilid 1 -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <div class="bg-emerald-100 text-emerald-800 font-bold py-1 px-3 rounded-lg inline-block text-xs mb-3">JILID 1</div>
+                            <h4 class="font-bold text-lg mb-2">Dasar Kalimat</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                                <li>Menentukan Isim, Fi’il, Huruf.</li>
+                                <li>Menentukan Isim Mu’rob dan Mabni.</li>
+                            </ul>
+                        </div>
+                        <!-- Jilid 2 -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <div class="bg-emerald-100 text-emerald-800 font-bold py-1 px-3 rounded-lg inline-block text-xs mb-3">JILID 2</div>
+                            <h4 class="font-bold text-lg mb-2">Identifikasi Isim</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                                <li>Nakirah & Ma’rifat.</li>
+                                <li>Mudzakkar & Muannast.</li>
+                                <li>Jamid & Musytaq.</li>
+                            </ul>
+                        </div>
+                        <!-- Jilid 3 -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <div class="bg-emerald-100 text-emerald-800 font-bold py-1 px-3 rounded-lg inline-block text-xs mb-3">JILID 3</div>
+                            <h4 class="font-bold text-lg mb-2">Identifikasi Fi'il</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                                <li>Mabni & Mu’rob.</li>
+                                <li>Mujarrad & Mazid.</li>
+                                <li>Lazim & Muta’addi, dll.</li>
+                            </ul>
+                        </div>
+                        <!-- Jilid 4 -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <div class="bg-emerald-100 text-emerald-800 font-bold py-1 px-3 rounded-lg inline-block text-xs mb-3">JILID 4</div>
+                            <h4 class="font-bold text-lg mb-2">Kedudukan (I'rob)</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                                <li>Isim-isim yang dibaca Rofa’.</li>
+                                <li>Isim-isim yang dibaca Nashob.</li>
+                                <li>Isim-isim yang dibaca Jer.</li>
+                            </ul>
+                        </div>
+                        <!-- Nadzam -->
+                        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
+                            <h4 class="font-bold text-lg mb-2 text-emerald-800"><i class="fas fa-music mr-2"></i> Nadzam Al-Miftah</h4>
+                            <p class="text-sm text-gray-600">Pelengkap materi berisi Nadzom yang disarikan dari Alfiyah dan Al-‘Imrithi + Lagu materi.</p>
+                        </div>
+                        <!-- Tasrif -->
+                        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
+                            <h4 class="font-bold text-lg mb-2 text-emerald-800"><i class="fas fa-table mr-2"></i> Tasrif Al-Miftah</h4>
+                            <p class="text-sm text-gray-600">Pendamping Jilid 3. Menampilkan 9 wazan penting yang sering dijumpai dalam kitab kuning.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= HALAMAN STRUKTUR ================= -->
+        <section id="struktur" class="page-section hidden py-24 bg-white fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Organisasi</span>
+                    <h2 class="text-4xl font-bold text-emerald-900 mt-2">Struktur MIFDA JEMBER</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Susunan kepengurusan Al-Miftah Lil Ulum Daerah Jember yang bertugas mengawal standarisasi metode.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Personil 1 -->
+                    <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdBmuV.th.png" alt="Ketua Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
+                        <h4 class="text-xl font-bold text-emerald-900">Ust. Misbahul Ulum</h4>
+                        <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">KETUA</p>
+                        <a href="https://wa.me/628987701455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-7701-455
+                        </a>
+                    </div>
+                    <!-- Personil 2 -->
+                    <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdauXs.png" alt="Sekretaris Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
+                        <h4 class="text-xl font-bold text-emerald-900">Ust. Misbahul Alam</h4>
+                        <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">SEKRETARIS</p>
+                        <a href="https://wa.me/628981561455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-1561-1455
+                        </a>
+                    </div>
+                    <!-- Personil 3 -->
+                    <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdw1K7.png" alt="Wakil I Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
+                        <h4 class="text-xl font-bold text-emerald-900">Ust. Fahmi Luayyin</h4>
+                        <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">WAKIL I</p>
+                        <a href="https://wa.me/628998701455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 899-8701-455
+                        </a>
+                    </div>
+                    <!-- Personil 4 -->
+                    <div class="bg-gray-50 rounded-3xl p-6 text-center border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdvc3N.png" alt="Wakil II Mifda" class="w-40 h-40 rounded-2xl mx-auto object-cover border-4 border-emerald-100 mb-4">
+                        <h4 class="text-xl font-bold text-emerald-900">Ust. Muhammad Anis</h4>
+                        <p class="text-emerald-600 font-medium mb-4 uppercase text-xs tracking-wider">WAKIL II</p>
+                        <a href="https://wa.me/628981111455" target="_blank" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> +62 898-1111-455
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section Pendaftaran -->
-    <section id="pendaftaran" class="py-24 bg-emerald-50">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto bg-white p-12 rounded-3xl shadow-xl border border-emerald-100">
-                <h2 class="text-3xl font-bold text-emerald-900 mb-6">Pendaftaran Calon Pangguna Al-Miftah</h2>
-                <p class="text-gray-600 mb-10 leading-relaxed">Silakan klik tombol di bawah ini untuk menuju formulir pendaftaran lembaga pengguna Al-Miftah Daerah Jember. Pastikan Anda telah menyiapkan dokumen yang diperlukan.</p>
-                <a href="https://mifdajemberpendaftaran.vercel.app/" target="_blank" class="inline-block bg-emerald-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition shadow-lg transform hover:scale-105 active:scale-95">
-                    Isi Formulir Pendaftaran
-                </a>
-                <p class="mt-6 text-xs text-gray-400 italic">*setelah mengisi form pendaftaran harap konfirmasi ke nomer Sekretaris Mifda</p>
+        <!-- ================= HALAMAN PROGRAM ================= -->
+        <section id="program" class="page-section hidden py-24 bg-gray-50 fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20">
+                    <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Layanan Kami</span>
+                    <h2 class="text-4xl font-bold text-emerald-900 mt-2">Peran Al-Miftah Daerah</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-emerald-900 mb-4">Training</h3>
+                        <p class="text-gray-600 leading-relaxed">Proses pembinaan pengajar (Asatidz) untuk memastikan kualitas penyampaian materi sesuai dengan standar Pusat Al-Miftah Sidogiri.</p>
+                    </div>
+                    <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-emerald-900 mb-4">Pembinaan Guru</h3>
+                        <p class="text-gray-600 leading-relaxed">Pembinaan Guru Al-Miftah setiap bulan guna mendalami metodologi dan manajemen kelas yang efektif.</p>
+                    </div>
+                    <div class="p-10 border border-gray-100 rounded-3xl bg-white card-hover shadow-sm transition-all duration-300 hover:shadow-xl text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-emerald-900 mb-4">Wisuda Bersama</h3>
+                        <p class="text-gray-600 leading-relaxed">Penyelenggaraan evaluasi serentak tingkat daerah untuk menjamin objektivitas kelulusan dan standarisasi nilai santri.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Call to Action -->
-    <section class="py-20 bg-emerald-900 text-white text-center relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl font-bold mb-8">Siap Menjadi Bagian Dari Kami?</h2>
-            <p class="mb-10 opacity-80 max-w-2xl mx-auto text-lg leading-relaxed">Mari bergabung bersama puluhan lembaga lainnya dalam mempermudah akses belajar kitab kuning bagi generasi mendatang.</p>
-            <a href="https://wa.me/628981561455?text=Assalamualaikum%20saya%20ingin%20menjadi%20pengguna%20almiftah" class="inline-flex items-center bg-white text-emerald-900 px-10 py-4 rounded-2xl font-bold hover:bg-emerald-50 transition shadow-2xl">
-                Konsultasi Calon Lembaga
-            </a>
-        </div>
-    </section>
+        <!-- ================= HALAMAN KEGIATAN ================= -->
+        <section id="kegiatan" class="page-section hidden py-24 bg-white fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Dokumentasi</span>
+                    <h2 class="text-4xl font-bold text-emerald-900 mt-2">Kegiatan Mifda Jember</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Placeholder Kegiatan 1 -->
+                    <div class="overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdZdle.md.jpg" alt="Kegiatan 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Muharram 1447</span>
+                            <h4 class="text-xl font-bold text-emerald-900 mt-2 mb-3">Kegiatan Pembinaan Rutin</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Pembinaan bulanan untuk menyelaraskan metode yang dipaparkan oleh para Tutor.</p>
+                        </div>
+                    </div>
+                    <!-- Placeholder Kegiatan 2 -->
+                    <div class="overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 card-hover shadow-sm">
+                        <img src="https://iili.io/fLdmEQ4.md.jpg" alt="Kegiatan 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Safar 1447</span>
+                            <h4 class="text-xl font-bold text-emerald-900 mt-2 mb-3">Sosialisasi PJ Lembaga</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Pertemuan rutin daerah untuk memperkuat pemahaman metode Al-Miftah bagi para PJ Lembaga.</p>
+                        </div>
+                    </div>
+                    <!-- Placeholder Kegiatan 3 -->
+                    <div class="overflow-hidden rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center p-12 text-center text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <p class="font-medium">Nantikan Kegiatan Berikutnya</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer id="kontak" class="bg-gray-950 text-gray-400 py-16 px-6">
+        <!-- ================= HALAMAN PENDAFTARAN ================= -->
+        <section id="pendaftaran" class="page-section hidden py-24 bg-emerald-50 fade-in">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-3xl mx-auto bg-white p-12 rounded-3xl shadow-xl border border-emerald-100">
+                    <h2 class="text-3xl font-bold text-emerald-900 mb-6">Pendaftaran Calon Pengguna Al-Miftah</h2>
+                    <p class="text-gray-600 mb-10 leading-relaxed">Silakan klik tombol di bawah ini untuk menuju formulir pendaftaran lembaga pengguna Al-Miftah Daerah Jember. Pastikan Anda telah menyiapkan dokumen yang diperlukan.</p>
+                    <a href="https://mifdajemberpendaftaran.vercel.app/" target="_blank" class="inline-block bg-emerald-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition shadow-lg transform hover:scale-105 active:scale-95">
+                        Isi Formulir Pendaftaran
+                    </a>
+                    <p class="mt-6 text-xs text-gray-400 italic">*setelah mengisi form pendaftaran harap konfirmasi ke nomer Sekretaris Mifda</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Selalu Terlihat) -->
+    <footer id="kontak" class="bg-gray-950 text-gray-400 py-16 px-6 mt-auto">
         <div class="container mx-auto grid md:grid-cols-4 gap-16 text-center md:text-left">
             <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center justify-center md:justify-start space-x-4 text-white mb-8">
@@ -321,10 +474,11 @@
                 </div>
                 <p class="mb-8 max-w-md mx-auto md:mx-0 leading-relaxed text-lg">
                     Al-Miftah Daerah Perwakilan dari Tatimmah Sidogiri untuk memastikan penyebaran metode bermanfaat bagi santri di wilayah jember.
+                </p>
                 
-                    <!-- Poin 2: Media Sosial di Footer -->
+                <!-- Poin 2: Media Sosial di Footer -->
                 <div class="flex justify-center md:justify-start space-x-5">
-                    <!-- Instagram -->
+                     <!-- Instagram -->
                     <a href="https://instagram.com/almiftahsidogirijember" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300 transform hover:scale-110">
                         <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
@@ -345,10 +499,10 @@
             <div>
                 <h4 class="text-white font-bold mb-8 text-lg">Menu Cepat</h4>
                 <ul class="space-y-4 text-sm">
-                    <li><a href="#beranda" class="hover:text-emerald-500 transition">Halaman Beranda</a></li>
-                    <li><a href="#tentang" class="hover:text-emerald-500 transition">Tentang Metode</a></li>
-                    <li><a href="#struktur" class="hover:text-emerald-500 transition">Struktur Organisasi</a></li>
-                    <li><a href="#kegiatan" class="hover:text-emerald-500 transition">Dokumentasi Kegiatan</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateTo('beranda')" class="hover:text-emerald-500 transition">Halaman Beranda</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateTo('tentang')" class="hover:text-emerald-500 transition">Tentang Metode</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateTo('struktur')" class="hover:text-emerald-500 transition">Struktur Organisasi</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateTo('kegiatan')" class="hover:text-emerald-500 transition">Dokumentasi Kegiatan</a></li>
                 </ul>
             </div>
             <div>
@@ -374,41 +528,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    const navHeight = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+        // Logika Navigasi Halaman (SPA Sederhana)
+        function navigateTo(pageId) {
+            // 1. Sembunyikan semua section yang memiliki class 'page-section'
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+            // 2. Tampilkan halaman yang dipilih
+            // Jika halaman 'beranda', kita tampilkan grup beranda
+            if (pageId === 'beranda') {
+                document.getElementById('beranda-group').classList.remove('hidden');
+            } else {
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+            }
+
+            // 3. Update status aktif di menu (Opsional: Memberikan warna aktif)
+            updateActiveMenu(pageId);
+
+            // 4. Scroll ke paling atas agar terasa seperti pindah halaman
+            window.scrollTo(0, 0);
+
+            // 5. Tutup menu mobile jika sedang terbuka
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        function updateActiveMenu(pageId) {
+            // Reset warna semua link desktop
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-emerald-600', 'font-bold');
+                link.classList.add('text-gray-600');
+                
+                // Cek jika ini adalah link yang aktif
+                if(link.getAttribute('data-target') === pageId) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-emerald-600', 'font-bold');
                 }
             });
-        });
+        }
 
-        // Mobile menu toggle
+        // Mobile menu toggle logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => menu.classList.add('hidden'));
+        
+        // Inisialisasi awal: Pastikan tombol Beranda aktif
+        document.addEventListener('DOMContentLoaded', () => {
+            updateActiveMenu('beranda');
         });
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
