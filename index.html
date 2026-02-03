@@ -473,14 +473,93 @@
 
         <!-- ================= HALAMAN PENDAFTARAN ================= -->
         <section id="pendaftaran" class="page-section hidden py-24 bg-emerald-50 fade-in">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-3xl mx-auto bg-white p-12 rounded-3xl shadow-xl border border-emerald-100">
-                    <h2 class="text-3xl font-bold text-emerald-900 mb-6">Pendaftaran Calon Pengguna Al-Miftah</h2>
-                    <p class="text-gray-600 mb-10 leading-relaxed">Silakan klik tombol di bawah ini untuk menuju formulir pendaftaran lembaga pengguna Al-Miftah Daerah Jember. Pastikan Anda telah menyiapkan dokumen yang diperlukan.</p>
-                    <a href="https://mifdajemberpendaftaran.vercel.app/" target="_blank" class="inline-block bg-emerald-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition shadow-lg transform hover:scale-105 active:scale-95">
-                        Isi Formulir Pendaftaran
+            <div class="container mx-auto px-6">
+                <!-- Header Pendaftaran -->
+                <div class="text-center mb-16">
+                    <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">Portal Layanan</span>
+                    <h2 class="text-4xl font-bold text-emerald-900 mt-2">Menu Pendaftaran</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Silakan pilih jenis pendaftaran yang sesuai dengan kebutuhan lembaga atau santri Anda.</p>
+                </div>
+
+                <!-- Grid Menu Pendaftaran -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    
+                    <!-- 1. Pendaftaran Lembaga Baru (Existing) -->
+                    <a href="https://mifdajemberpendaftaran.vercel.app/" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-mosque text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">Lembaga Baru</h3>
+                        <p class="text-sm text-gray-500 mb-4">Pendaftaran untuk lembaga yang ingin menggunakan metode Al-Miftah.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </a>
-                    <p class="mt-6 text-xs text-gray-400 italic">*setelah mengisi form pendaftaran harap konfirmasi ke nomer Sekretaris Mifda</p>
+
+                    <!-- 2. Pendaftaran Pembinaan Mandiri -->
+                    <a href="#" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">Pembinaan Mandiri</h3>
+                        <p class="text-sm text-gray-500 mb-4">Formulir pengajuan kegiatan pembinaan mandiri untuk lembaga.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+
+                    <!-- 3. Pendaftaran Training Al-Miftah & Takhossus -->
+                    <a href="#" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-user-graduate text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">Training & Takhossus</h3>
+                        <p class="text-sm text-gray-500 mb-4">Pendaftaran peserta pelatihan guru metode Al-Miftah dan Takhossus.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+
+                    <!-- 4. Pendaftaran MUNADA -->
+                    <a href="#" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-file-signature text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">MUNADA</h3>
+                        <p class="text-sm text-gray-500 mb-4">Pendaftaran Ujian Akhir Daerah (MUNADA) untuk santri.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+
+                    <!-- 5. Pendaftaran Wisuda Mandiri -->
+                    <a href="#" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-certificate text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">Wisuda Mandiri</h3>
+                        <p class="text-sm text-gray-500 mb-4">Pendaftaran pelaksanaan wisuda mandiri di lembaga masing-masing.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+
+                    <!-- 6. Pendaftaran Wisuda Bersama -->
+                    <a href="#" target="_blank" class="group relative bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700">Wisuda Bersama</h3>
+                        <p class="text-sm text-gray-500 mb-4">Pendaftaran peserta untuk mengikuti agenda Wisuda Bersama Daerah.</p>
+                        <span class="mt-auto text-emerald-600 font-semibold text-sm flex items-center">
+                            Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+
+                </div>
+                
+                <div class="mt-12 text-center text-xs text-gray-400 italic">
+                    *Pilih menu yang sesuai. Pastikan data yang diinputkan valid.
                 </div>
             </div>
         </section>
@@ -615,5 +694,3 @@
     </script>
 </body>
 </html>
-
-
